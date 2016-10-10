@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+	<install>
+		<altermenu>
+			<sql>
+				INSERT INTO office.menu_item (nm_page,nr_seq,label_item,type_item,nm_action,image_ins,is_has_sub,is_popup_action)
+				VALUES(
+					'Main',0,'Test Modul','Menu','ADS','icon-bookmark','1','0'
+				);
+				INSERT INTO office.menu_item (nm_page,nr_seq,label_item,type_item,nm_action,image_ins,is_has_sub,is_popup_action)
+				VALUES(
+					'ADS',1,'Sub Test Modul','Proc','/ads/test','','1','0'
+				);
+			</sql>
+		</altermenu>
+		<query>
+			<sql>
+				-- Table: ads
+
+				-- DROP TABLE ads;
+
+				CREATE TABLE ads
+				(
+				  ads_id serial NOT NULL,
+				  title character varying(100),
+				  url character varying(300),
+				  banner character varying(100),
+				  category_id integer,
+				  timelog character varying(15),
+				  city_id character varying(3),
+				  page character varying(25),
+				  "position" character varying(25),
+				  flag character varying(1),
+				  news_id integer,
+				  poi integer,
+				  CONSTRAINT ads_pkey PRIMARY KEY (ads_id)
+				)
+				WITH (
+				  OIDS=FALSE
+				);
+				ALTER TABLE ads
+				  OWNER TO postgres;
+			</sql>
+		</query>
+	    <key>a12cf7bf52570e27eb3cc7b4f6e76cb9</key></install>
+	    <uninstall>
+	    	<removemenu>
+	    		<sql>
+	    			DELETE FROM office.menu_item WHERE nm_action='ADS';
+	    			DELETE FROM office.menu_item WHERE nm_page='ADS';
+	    		</sql>
+	    	</removemenu>
+	    	<query>
+	    		<sql>
+	    			DROP TABLE IF EXISTS ads;
+	    		</sql>
+	    	</query>
+	    </uninstall>
+</module>

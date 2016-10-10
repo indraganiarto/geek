@@ -1,0 +1,457 @@
+
+- count_hit		= jumlah Hit
+//- comment_review	= jumlah komentar review
+- share_facebook	= jumlah share ke FB
+- share_twitter		= jumlah share ke Twitter
+
+
+------GET ADS [GET]
+
+http://graph.ulinulin.net/content/ads.if
+
+- category_id	=> left blank to show all
+
+P.S
+- banner_path:
+  => http://media.ulinulin.net/ads/[banner_path]
+
+
+
+
+------SUBMIT REGISTER [POST]
+
+http://graph.ulinulin.net/user/register.if
+
+- first_name
+- last_name
+- user_name		=> just (a-z0-9_-)
+- email
+- password
+- gender		=> (male|female)
+- birth_date		=> format (dd > 01)
+- birth_month		=> format (mm > 09)
+- birth_year		=> format (YYYY > 1987)
+- phone
+- city
+- country
+
+
+
+
+------LOGIN [POST]
+
+http://graph.ulinulin.net/user/login.if
+
+- user_name
+- password
+
+P.S
+- photo_path:
+  => Square (75 * 75px) = http://media.ulinulin.net/photos/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/photos/resize/[photo_path]
+  => Original = http://media.ulinulin.net/photos/original/[photo_path]
+
+
+
+
+------LOGIN THIRD PARTY [POST]
+
+http://graph.ulinulin.net/user/login-3rdparty.if
+
+- 3rdparty_provider	=> (facebook|twitter)
+- 3rdparty_token
+
+
+
+
+------FORGOT PASSWORD [POST]
+
+http://graph.ulinulin.net/user/forgot-password.if
+
+- user_login	=> (user_name OR email)
+
+
+
+
+------RE-SEND CODE ACTIVATION [POST]
+
+http://graph.ulinulin.net/user/email-activation.if
+
+- user_login	=> (user_name OR email)
+
+
+
+
+------GET RECOMMENDED PAGE [GET]
+
+http://graph.ulinulin.net/content/recommended-page.if
+
+Optional:
+- user_id	=> for user favourite status
+
+P.S
+- icon_path:
+  => Square (64 * 64px) = http://media.ulinulin.net/images/thumbs/[icon_path]
+
+
+
+
+------GET COUNTRY [GET]
+
+http://graph.ulinulin.net/content/country.if
+
+
+
+
+------GET USER INFO [GET]
+
+http://graph.ulinulin.net/user/info.if
+
+- user_id	=> left blank to show all
+
+P.S
+- photo_path:
+  => Square (75 * 75px) = http://media.ulinulin.net/photos/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/photos/resize/[photo_path]
+  => Original = http://media.ulinulin.net/photos/original/[photo_path]
+
+
+
+
+------CHANGE USER INFO [POST]
+
+http://graph.ulinulin.net/user/change-info.if
+
+- first_name
+- last_name
+- gender	=> (male|female)
+- birth_date	=> format (dd > 01)
+- birth_month	=> format (mm > 09)
+- birth_year	=> format (YYYY > 1987)
+- phone
+- city
+- country
+- user_id
+- token
+
+
+
+
+------CHANGE USER PASSWORD [POST]
+
+http://graph.ulinulin.net/user/change-password.if
+
+- current_password
+- new_password
+- user_id
+- token
+
+
+
+
+------CHANGE USER EMAIL [POST]
+
+http://graph.ulinulin.net/user/change-email.if
+
+- current_password
+- email
+- user_id
+- token
+
+
+
+
+------CHANGE USER PHOTO PROFILE [POST]
+
+http://graph.ulinulin.net/user/change-photo.if
+
+- file_upload	=> image upload (gif, png, jpg)
+- user_id
+- token
+
+P.S
+- photo_path:
+  => Square (75 * 75px) = http://media.ulinulin.net/photos/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/photos/resize/[photo_path]
+  => Original = http://media.ulinulin.net/photos/original/[photo_path]
+
+
+
+
+------GET CATEGORIES [GET]
+
+http://graph.ulinulin.net/content/categories.if
+
+- category_id	=> left blank to show all
+
+
+
+
+------GET MENU [GET]
+
+http://graph.ulinulin.net/content/mainmenu.if
+
+- category_id
+
+P.S
+- cover_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[cover_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[cover_path]
+  => Original = http://media.ulinulin.net/images/original/[cover_path]
+
+
+
+
+------GET OBJECTS [GET]
+
+http://graph.ulinulin.net/content/objects.if
+
+- category_id
+- object_id					=> left blank to show all
+- (mainmenu_id || submenu_id || subsubmenu_id)	=> left blank to show all
+- latitude
+- longitude
+
+Optional:
+- user_id					=> for user favourite status
+
+Paging:
+- limit
+- page
+
+P.S
+- cover_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[cover_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[cover_path]
+  => Original = http://media.ulinulin.net/images/original/[cover_path]
+
+
+
+
+------GET RANDOM OBJECTS [GET]
+
+http://graph.ulinulin.net/content/random-objects.if
+
+- limit		=> digit only (0-9)
+
+Optional:
+- user_id	=> for user favourite status
+
+P.S
+- cover_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[cover_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[cover_path]
+  => Original = http://media.ulinulin.net/images/original/[cover_path]
+
+
+
+
+------GET OBJECTS NEAR ME [GET]
+
+http://graph.ulinulin.net/content/near-objects.if
+
+- latitude
+- longitude
+
+Optional:
+- user_id					=> for user favourite status
+
+Paging:
+- limit
+- page
+
+P.S
+- cover_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[cover_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[cover_path]
+  => Original = http://media.ulinulin.net/images/original/[cover_path]
+
+
+
+
+------SEARCH OBJECTS [GET]
+
+http://graph.ulinulin.net/content/search-objects.if
+
+- keyword
+- category_id					=> left blank to show all
+- (mainmenu_id || submenu_id || subsubmenu_id)	=> left blank to show all
+- latitude
+- longitude
+
+Optional:
+- user_id					=> for user favourite status
+
+Paging:
+- limit
+- page
+
+P.S
+- cover_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[cover_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[cover_path]
+  => Original = http://media.ulinulin.net/images/original/[cover_path]
+
+
+
+
+------GET OBJECT GALLERIES [GET]
+
+http://graph.ulinulin.net/content/galleries-object.if
+
+- object_id
+- gallery_id	=> left blank to show all
+
+P.S
+- photo_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[photo_path]
+  => Original = http://media.ulinulin.net/images/original/[photo_path]
+
+
+
+
+------GET FEATURES [GET]
+
+http://graph.ulinulin.net/content/features.if
+
+- object_id
+- feature_id	=> left blank to show all
+
+Paging:
+- limit
+- page
+
+P.S
+- photo_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[photo_path]
+  => Original = http://media.ulinulin.net/images/original/[photo_path]
+
+
+
+
+------GET FAVOURITES [GET]
+
+http://graph.ulinulin.net/content/favourites.if
+
+- category_id	=> left blank to show all
+- user_id	=> left blank to show all
+
+Paging:
+- limit
+- page
+
+
+
+
+------POST FAVOURITES [POST]
+
+http://graph.ulinulin.net/user/favourites.if
+
+- action	=> (add|delete)
+- object_id
+- user_id
+- token
+
+
+
+
+------POST RATING [POST]
+
+http://graph.ulinulin.net/user/rate.if
+
+- point	=> (value rate: 1 - 5)
+- object_id
+- user_id
+- token
+
+
+
+
+------POST HIT/SHARE COUNTER [POST]
+
+http://graph.ulinulin.net/user/counter.if
+
+- type		=> (hit|facebook|twitter)
+- object_id
+- user_id
+
+
+
+
+------GET COMMENTS [GET]
+
+http://graph.ulinulin.net/content/comments.if
+
+- type		=> (review|gallery|news)
+- type_id	=> (review|gallery = 'object_id') (news = 'news_id')
+
+Paging:
+- limit
+- page
+
+P.S
+- photo_path:
+  => Square (75 * 75px) = http://media.ulinulin.net/photos/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/photos/resize/[photo_path]
+  => Original = http://media.ulinulin.net/photos/original/[photo_path]
+
+
+
+
+------POST COMMENTS [POST]
+
+http://graph.ulinulin.net/user/comments.if
+
+- type		=> (review|gallery|news)
+- type_id	=> (review|gallery = 'object_id') (news = 'news_id')
+- message
+- user_id
+- token
+
+
+
+
+------DELETE COMMENTS [POST]
+
+http://graph.ulinulin.net/user/delete-comments.if
+
+- comment_id
+- user_id
+- token
+
+
+
+
+------GET NEWS [GET]
+
+http://graph.ulinulin.net/content/news.if
+
+- news_id	=> left blank to show all
+
+Paging:
+- limit
+- page
+
+P.S
+- cover_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[cover_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[cover_path]
+  => Original = http://media.ulinulin.net/images/original/[cover_path]
+
+
+
+
+------GET NEWS GALLERIES [GET]
+
+http://graph.ulinulin.net/content/galleries-news.if
+
+- news_id
+- gallery_id	=> left blank to show all
+
+P.S
+- photo_path:
+  => Square (100 * 100px) = http://media.ulinulin.net/images/thumbs/[photo_path]
+  => Resize (max width: 600px) = http://media.ulinulin.net/images/resize/[photo_path]
+  => Original = http://media.ulinulin.net/images/original/[photo_path]
